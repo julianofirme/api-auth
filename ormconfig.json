@@ -1,6 +1,6 @@
 {
    "type": "mongodb",
-   "database": "test",
+   "database": "authdb",
    "synchronize": true,
    "logging": false,
    "entities": [

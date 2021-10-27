@@ -1,10 +1,11 @@
 version: "3"
 
 services:
-  app:
-    build: .
-    command: npm run dev
-    ports:
-      - "8080:8080"
+  mongo:
+    image: 'mongo:latest'
+    ports: 
+      - 27017:27017
     volumes:
-      - .:/usr/app
+      - mongodb_data_container:/data/db
+volumes:
+  mongodb_data_container:
