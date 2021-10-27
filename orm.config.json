@@ -1,0 +1,19 @@
+{
+  "type": "postgress",
+  "host": "localhost",
+  "port": 5433,
+  "username": "docker",
+  "password": "docker",
+  "database": "forum-api",
+  "synchronize": true,
+  "logging": false,
+  "entities": [
+     "src/entity/**/*.ts"
+  ],
+  "migrations": [
+     "src/migration/**/*.ts"
+  ],
+  "subscribers": [
+     "src/subscriber/**/*.ts"
+  ]
+}
