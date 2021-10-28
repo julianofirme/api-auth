@@ -2,11 +2,12 @@ import { Entity, ObjectIdColumn, ObjectID, Column } from "typeorm";
 import { randomBytes, pbkdf2Sync as hashGenerator } from "crypto";
 import { validate } from "email-validator";
 
-enum STATUS {
+export enum STATUS {
   INVALID_EMAIL = "Invalid e-mail",
-  INVALID_NAME = "  Invalid name",
+  INVALID_NAME = " Invalid name",
   INVALID_PASSWORD = "The password must contain as least 8 characters, 1 uppercase character and 1 number",
   OK = "Ok",
+  REGISTER_ERROR = "An error while trying to register user",
 }
 
 @Entity()
