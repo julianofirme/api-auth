@@ -1,4 +1,6 @@
 import { Router } from "express";
+import { sign } from "jsonwebtoken";
+import { SECRET } from "../config/secret";
 import { AuthController } from "../controller/AuthController";
 import { STATUS, User } from "../entity/User";
 
@@ -20,5 +22,26 @@ authRouter.post("/register", async (req, res) => {
     }
   } else {
     return res.status(400).json({ message: response });
+  }
+});
+
+authRouter.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  const authController = new AuthController();
+  const user = await authController.findUserByEmail(email);
+  if (user && user.isPasswordCorrect(password)) {
+    const token = sign({ user: email, timestamp: new Date() }, SECRET, {
+      expiresIn: "5m",
+    });
+    res.json({
+      authorized: true,
+      user,
+      token,
+    });
+  } else {
+    return res
+      .status(401)
+      .json({ authorized: false, message: STATUS.NOT_AUTHORIZED });
   }
 });

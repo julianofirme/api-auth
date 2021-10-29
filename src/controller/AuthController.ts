@@ -18,4 +18,9 @@ export class AuthController {
       throw new Error(error);
     }
   }
+
+  async findUserByEmail(email: string): Promise<User> {
+    const user = await this.entityMannager.findOne(User, { email: email });
+    return user;
+  }
 }

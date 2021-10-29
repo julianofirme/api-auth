@@ -1,6 +1,6 @@
 {
    "type": "mongodb",
-   "database": "authdb",
+   "database": "forum",
    "synchronize": true,
    "logging": false,
    "entities": [
