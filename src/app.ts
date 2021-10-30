@@ -3,7 +3,7 @@ import * as cors from "cors";
 import * as logger from "morgan";
 
 import { connectToDb } from "./config/db";
-import { authRouter } from "./routes/Auth";
+import { authRouter } from "./routes/auth";
 
 export const app = express();
 

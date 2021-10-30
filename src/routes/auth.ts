@@ -45,3 +45,7 @@ authRouter.post("/login", async (req, res) => {
       .json({ authorized: false, message: STATUS.NOT_AUTHORIZED });
   }
 });
+
+authRouter.get("/home", AuthController.verifyToken, (req, res) => {
+  res.json({ message: "Login successful" });
+});
