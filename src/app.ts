@@ -1,8 +1,8 @@
-import * as express from "express";
-import * as cors from "cors";
-import * as logger from "morgan";
+import express from "express";
+import cors from "cors";
+import logger from "morgan";
 
-import { connectToDb } from "./config/db";
+import connection from "./config/db";
 import { authRouter } from "./routes/auth";
 
 export const app = express();
@@ -11,6 +11,6 @@ app.use(cors());
 app.use(express.json());
 app.use(logger("dev"));
 
-connectToDb();
+connection.create();
 
 app.use("/auth", authRouter);

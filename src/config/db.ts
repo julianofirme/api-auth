@@ -1,10 +1,23 @@
-import { createConnection } from "typeorm";
+import { createConnection, getConnection } from "typeorm";
 
-export const connectToDb = async () => {
-  const connect = await createConnection();
-  console.log(`:::App connect to db -> ${connect.options.database}`);
+const connection = {
+  async create() {
+    const connect = await createConnection();
+    console.log(`:::App connect to db -> ${connect.options.database}`);
+  },
 
-  process.on("SIGINT", () => {
-    connect.close().then(() => console.log("Db connection closed"));
-  });
+  async close() {
+    await getConnection().close();
+  },
+
+  async clear() {
+    const connection = getConnection();
+    const entities = connection.entityMetadatas;
+
+    entities.forEach(async (entity) => {
+      const repository = connection.getRepository(entity.name);
+      await repository.query(`DELETE FROM ${entity.tableName}`);
+    });
+  },
 };
+export default connection;

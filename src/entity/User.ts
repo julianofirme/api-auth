@@ -1,4 +1,4 @@
-import { Entity, ObjectIdColumn, ObjectID, Column } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 import { randomBytes, pbkdf2Sync as hashGenerator } from "crypto";
 import { validate } from "email-validator";
 
@@ -11,10 +11,10 @@ export enum STATUS {
   NOT_AUTHORIZED = "User not authorized",
 }
 
-@Entity()
+@Entity("users")
 export class User {
-  @ObjectIdColumn()
-  id: ObjectID;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
   @Column({ unique: true })
   email: string;
