@@ -9,6 +9,6 @@ services:
       - postgres_data_container:/data/db
     environment:
       - POSTGRES_PASSWORD=mysecretpassword
-      - POSTGRES_DB=forum-test
+      - POSTGRES_DB=forum
 volumes:
   postgres_data_container:
