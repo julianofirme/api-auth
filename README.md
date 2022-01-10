@@ -1,7 +1,4 @@
-# 🚧  Fórum 🚧 
-
-## Server-side do projeto de um fórum voltado para desenvolvedores.
-- [Client-side do projeto](https://github.com/jfirme-sys/client-forum)
+# API para autenticação
 
 ### Pré-requisitos
 
